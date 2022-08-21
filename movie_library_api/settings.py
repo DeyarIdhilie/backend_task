@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-
+#added
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,7 +30,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+#added my application
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'movie_library.apps.MovieLibraryConfig',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -72,11 +76,14 @@ WSGI_APPLICATION = 'movie_library_api.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+#change database configuration
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+         'ENGINE': 'django.db.backends.mysql',
+        'USER': 'root',
+        'NAME': 'movie_library_db',
+        'PASSWORD': '123456',
+        'HOST': '',
     }
 }
 
@@ -116,6 +123,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+#u don't save the image but its location aka url as text
+MEDIA_ROOT = '/media/' # a diroctory to save images in the app
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #we nedd a url
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

@@ -1,10 +1,10 @@
 from django.db import models
 from .movie import Movie
+from .base_model import BaseModel
+class Trailer(BaseModel):
 
-class Trailer(models.Model):
 
-
-       movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+       movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name="trailer")
        url = models.URLField(
               max_length=200,
               db_index=True,

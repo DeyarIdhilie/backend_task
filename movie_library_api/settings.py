@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 #added
 import os
+#from ..movie_library.utils.exception_handler import api_exception_handler
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -105,7 +106,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
+    #'EXCEPTION_HANDLER': '..movie_library.utils.exception_handler.api_exception_handler',
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/

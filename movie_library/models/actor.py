@@ -1,8 +1,9 @@
 from django.db import models
 #from .movie import Movie
+from .base_model import BaseModel
 
 
-class Actor(models.Model):
+class Actor(BaseModel):
 
     class Meta:
 

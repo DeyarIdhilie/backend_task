@@ -18,26 +18,29 @@ class MovieRepository():
         query = BaseRepository().get_base_query(Movie, filters)
         return query.all()
 
-    def create_movie(self, **data):
+    def create_movie(self, data):
 
         movie = Movie(**data)
         movie.save()
         return movie
 
-    def update_movie(self, movie , **data):
+    def update_movie(self, movie, partial, data):
 
-        movie.title = data.get("title")
-        movie.year = data.get("year")
-        movie.release_date = data.get("release_date")
-        movie.duration = data.get("duration")
+        if partial:
+            movie.title = data.get("title", movie.title)
+            movie.year = data.get("year", movie.year)
+            movie.release_date = data.get("release_date", movie.release_date)
+            movie.duration = data.get("duration", movie.duration)
+
+        else:
+            movie.title = data.get("title")
+            movie.year = data.get("year")
+            movie.release_date = data.get("release_date")
+            movie.duration = data.get("duration")
+
         movie.save()
         return movie
 
-    def update_movie_partially(self , movie, **data):
 
-        movie.title = data.get("title", movie.title)
-        movie.year = data.get("year", movie.year)
-        movie.release_date = data.get("release_date", movie.release_date)
-        movie.duration = data.get("duration", movie.duration)
-        movie.save()
-        return movie
+
+

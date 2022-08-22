@@ -1,7 +1,7 @@
 from django.db import models
 from .movie import Movie
-
-class Image(models.Model):
+from .base_model import BaseModel
+class Image(BaseModel):
     class Meta:
 
         db_table = "image"

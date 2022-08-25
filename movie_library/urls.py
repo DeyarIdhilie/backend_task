@@ -2,23 +2,28 @@ from django.contrib import admin
 from django.urls import path, include
 
 
-from rest_framework import routers
-#from rest_framework.routers import ExtendedSimpleRouter
-#from third_party_app.routers import SomeRouter
 
+from rest_framework_extensions.routers import ExtendedSimpleRouter
+
+from rest_framework_nested import routers
 from .views.movie_controller import MovieViewSet
+from .views.trailer_controller import TrailerViewSet
 from .views.actor_controller import ActorViewSet
+(...)
+
+router = routers.SimpleRouter()
+router.register(r'movies', MovieViewSet , basename= 'movies')
+domains_router = routers.NestedSimpleRouter(router, r'movies', lookup='domain')
+domains_router.register(r'trailers', TrailerViewSet, basename='movie-trailer')
+# 'basename' is optional. Needed only if the same viewset is registered more than once
+# Official DRF docs on this option: http://www.django-rest-framework.org/api-guide/routers/
+
+urlpatterns = [
+    path(r'', include(router.urls)),
+    path(r'', include(domains_router.urls)),
+]
 router = routers.SimpleRouter()
 
-router.register(r'movies', MovieViewSet, basename="library_movies")
-router.register(r'actors', ActorViewSet, basename="actors")
-'''router = ExtendedSimpleRouter()
-# tasks route
-(
-    router.register(r'tasks', TaskViewSet)
-          .register(r'comments',
-                    CommentViewSet,
-                    'tasks-comment',
-                    parents_query_lookups=['object_id'])
-)'''
-urlpatterns = router.urls
+
+
+

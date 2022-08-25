@@ -107,8 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
-    #'EXCEPTION_HANDLER': '..movie_library.utils.exception_handler.api_exception_handler',
+    #'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
+    'EXCEPTION_HANDLER': 'movie_library.utils.exception_handler.api_exception_handler',
 }
 
 # Internationalization

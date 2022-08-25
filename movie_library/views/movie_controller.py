@@ -2,13 +2,16 @@ from django.http import HttpResponse
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework_extensions.mixins import NestedViewSetMixin
+
 from ..components.movie_component import MovieComponent
 from ..models.movie import Movie
-from ..utils.serializers.movie_serializer import MovieSerializer
+from ..utils.serializers.movie_serializer import *
 from ..repositories.movie_repository import MovieRepository
+from rest_framework.exceptions import APIException
 
 
-class MovieViewSet(ViewSet):
+class MovieViewSet(NestedViewSetMixin, ViewSet):
 
     def list(self, request):
 
@@ -31,7 +34,7 @@ class MovieViewSet(ViewSet):
     def retrieve(self, request, pk=None):
 
         movie = MovieComponent.get_movie(pk)
-        serializer = MovieSerializer(movie)
+        serializer = MovieTrailerSerializer(movie)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def update(self, request, pk=None):

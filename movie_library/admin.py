@@ -6,13 +6,22 @@ from .models.movie import Movie
 from .models.actor import *
 from .models.trailer import Trailer
 #from .models.actor
-#admin.site.register(Movie)
+admin.site.register(Movie)
 #.site.register(Actor)
-#admin.site.register(Trailer)
+admin.site.register(Trailer)
 
-class trailorInline(admin.StackedInline):
+'''class trailorInline(admin.StackedInline):
     model = Trailer
-    extra = 0
+    extra = 0'''
+#@admin.register(Movie)
+'''class movieAdmin(admin.ModelAdmin):
+    inlines = [trailorInline]# , actorInline]
+    #list_display = ["created", "total_price", "paid"]
+    
+admin.site.register(Movie,movieAdmin)
+admin.site.register(Actor)#,actorAdmin)'''
+
+
 '''class actorInline(admin.StackedInline):
     model = Actor_Movie
     extra = 0
@@ -22,10 +31,7 @@ class movieInline(admin.StackedInline):
     model = Actor_Movie
     extra = 0'''
 
-#@admin.register(Movie)
-class movieAdmin(admin.ModelAdmin):
-    inlines = [trailorInline]# , actorInline]
-    #list_display = ["created", "total_price", "paid"]
+
 
 '''class actorAdmin(admin.ModelAdmin):
     inlines = [movieInline]'''
@@ -38,5 +44,3 @@ class movieAdmin(admin.ModelAdmin):
 
 
 
-admin.site.register(Movie,movieAdmin)
-admin.site.register(Actor)#,actorAdmin)

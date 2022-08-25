@@ -5,7 +5,7 @@ from typing import Any
 
 from rest_framework.views import Response
 
-...
+
 
 
 def api_exception_handler(exc: Exception, context: dict[str, Any]) -> Response:
@@ -13,6 +13,8 @@ def api_exception_handler(exc: Exception, context: dict[str, Any]) -> Response:
 
     # Call REST framework's default exception handler first,
     # to get the standard error response.
+    if True:
+        print("hi")
     response = exception_handler(exc, context)
 
     # Now add the HTTP status code to the response.
@@ -22,4 +24,3 @@ def api_exception_handler(exc: Exception, context: dict[str, Any]) -> Response:
     return response
 
 
-...

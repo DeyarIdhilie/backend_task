@@ -9,6 +9,7 @@ from rest_framework_nested import routers
 from .views.movie_controller import MovieViewSet
 from .views.trailer_controller import TrailerViewSet
 from .views.actor_controller import ActorViewSet
+from .views.user_controller import UserViewSet
 (...)
 
 router = routers.SimpleRouter()
@@ -23,7 +24,8 @@ urlpatterns = [
     path(r'', include(domains_router.urls)),
 ]
 router = routers.SimpleRouter()
-
+router.register(r'users',UserViewSet, basename='user-register')
+urlpatterns = router.urls
 
 
 

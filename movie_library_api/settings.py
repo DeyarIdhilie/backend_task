@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 #added
 import os
+# from ..movie_library.models import user
 #from ..movie_library.utils.exception_handler import api_exception_handler
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -135,3 +136,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #we nedd a url
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'movie_library.CustomUser'

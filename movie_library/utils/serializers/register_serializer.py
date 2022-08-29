@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 from ...models.users import CustomUser
+
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
@@ -15,12 +15,12 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ( 'password', 'password2', 'email', 'first_name', 'last_name', 'date_of_birth', 'gender','is_superuser', 'is_staff')
-
+        fields = (
+            'password', 'password2', 'email', 'first_name', 'last_name', 'date_of_birth', 'gender', 'is_superuser',
+            'is_staff')
 
     def validate(self, attrs):
         if attrs['password'] != attrs['password2']:
             raise serializers.ValidationError({"password": "Password fields didn't match."})
 
         return attrs
-

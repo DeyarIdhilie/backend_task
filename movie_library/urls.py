@@ -1,18 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
-
-
-
-from rest_framework_extensions.routers import ExtendedSimpleRouter
-
 from rest_framework_nested import routers
-
 from .views.log_in_controller import LogInViewSet, LogoutView
 from .views.movie_controller import MovieViewSet
 from .views.trailer_controller import TrailerViewSet
-from .views.actor_controller import ActorViewSet
 from .views.user_controller import UserViewSet
-(...)
 
 router = routers.SimpleRouter()
 router.register(r'movies', MovieViewSet , basename= 'movies')
@@ -28,11 +20,7 @@ urlpatterns = [
     path(r'', include(router.urls)),
     path(r'', include(domains_router.urls)),
 ]
-# router = routers.SimpleRouter()
-# router.register(r'users',UserViewSet, basename='user-register')
-#
-# router.register(r'login',LogInViewSet, basename='user-login')
-# urlpatterns = router.urls
+
 
 
 

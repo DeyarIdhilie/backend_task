@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-#we need to be able to find the url of the image to refrece it
+# we need to be able to find the url of the image to refrece it
 from django.conf import settings
 from django.conf.urls.static import static
+
 urlpatterns = [
 
-
-    path('api/', include('movie_library.urls')),
-    path('admin/', admin.site.urls),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_URL)
+                  path('api/', include('movie_library.urls')),
+                  path('admin/', admin.site.urls),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_URL)

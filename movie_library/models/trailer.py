@@ -14,5 +14,6 @@ class Trailer(BaseModel):
         unique=True,
         blank=True
     )
-'''def __str__(self):
-              return self.movie.title'''
+
+    def __str__(self):
+        return self.movie.title

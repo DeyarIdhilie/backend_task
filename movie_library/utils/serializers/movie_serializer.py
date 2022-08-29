@@ -1,11 +1,9 @@
 from rest_framework import serializers
-
 from ...models.movie import Movie
 from ...utils.serializers.trailer_serializer import TrailerSerializer
 
 
 class MovieSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Movie
         fields = ['id', 'title', 'duration', 'year', 'release_date', 'created', 'updated']

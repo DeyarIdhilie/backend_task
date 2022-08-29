@@ -1,8 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils import timezone
-
-
 from .manager import CustomUserManager
 
 
@@ -11,7 +9,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         FEMALE = 'Female'
         MALE = 'Male'
         OTHER = 'Others'
-    email = models.EmailField(('email address'), unique=True)
+    email = models.EmailField('email address', unique=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     date_of_birth= models.DateField()
@@ -27,7 +25,3 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.email
 
-    @property
-    def IsAdminUser(self):
-        if self.is_staff:
-            return True

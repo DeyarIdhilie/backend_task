@@ -9,10 +9,10 @@ from ..models.movie import Movie
 from ..utils.serializers.movie_serializer import *
 from ..repositories.movie_repository import MovieRepository
 from rest_framework.exceptions import APIException
-
+from ..utils.custome_premissions import CustomPermissions
 
 class MovieViewSet(NestedViewSetMixin, ViewSet):
-
+    permission_classes= [CustomPermissions]
     def list(self, request):
 
         movies = MovieComponent.get_movies()

@@ -26,3 +26,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+    @property
+    def IsAdminUser(self):
+        if self.is_staff:
+            return True

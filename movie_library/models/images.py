@@ -7,10 +7,15 @@ class Image(BaseModel):
     class Meta:
         db_table = "image"
 
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    class Type(models.IntegerChoices):
+        COVER = 1
+        OTHER = 2
+
+
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE,related_name="images")
     url = models.ImageField(null=True, blank=True,
                             upload_to="images/")  # todo change to use string instead of image field
-    type = models.IntegerChoices
+    type = models.IntegerField(choices=Type.choices)
 
     def __str__(self):
         return self.title

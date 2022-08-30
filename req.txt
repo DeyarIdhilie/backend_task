@@ -1,3 +1,5 @@
 Django
 djangorestframework
 PILLOW
+mysqlclient
+rest_framework_simplejwt

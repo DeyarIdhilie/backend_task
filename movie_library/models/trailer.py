@@ -14,6 +14,7 @@ class Trailer(BaseModel):
         unique=True,
         blank=True
     )
+    # you should use db_index=True when you have a field that is unique for faster lookups.
 
     def __str__(self):
         return self.movie.title

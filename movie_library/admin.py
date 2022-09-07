@@ -34,6 +34,15 @@ class actorAdmin(admin.ModelAdmin):
     inlines = [movieInline]
 
 admin.site.register(Actor,actorAdmin)
+
+# class moviesInline(admin.StackedInline):
+#     model = UserMovies
+#     extra = 0
+#
+# class actorAdmin(admin.ModelAdmin):
+#     inlines = [moviesInline]
+#
+# admin.site.register(Actor,actorAdmin)
 ''' list_display = ("show_average",)
     def show_average(self, obj):
 

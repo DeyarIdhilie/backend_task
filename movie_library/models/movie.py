@@ -13,3 +13,5 @@ class Movie(BaseModel):
     #actors = models.ManyToManyField(Actor, through='MovieActor')
 
 
+    def __str__(self):
+        return self.title

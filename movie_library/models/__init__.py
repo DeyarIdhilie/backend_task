@@ -5,3 +5,4 @@ from .base_model import *
 from .users import *
 from .manager import *
 from .movie_actor import MovieActor
+from .user_movies import UserMovies

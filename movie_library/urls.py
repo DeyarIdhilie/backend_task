@@ -7,7 +7,7 @@ from .views.actor_controller import ActorViewSet
 from .views.trailer_controller import TrailerViewSet
 from .views.user_controller import UserViewSet
 from .views.user_movies_controller import UserMoviesViewSet
-
+from .views.image_controller import ImageViewSet
 router = routers.SimpleRouter()
 router.register(r'movies', MovieViewSet, basename= 'movies')
 router.register(r'actors', ActorViewSet, basename= 'actors')
@@ -16,6 +16,7 @@ router.register(r'login',LogInViewSet, basename='user-login')
 router.register(r'logout',LogoutView, basename='user-logout')
 domains_router_trailers = routers.NestedSimpleRouter(router, r'movies', lookup='domain')
 domains_router_trailers.register(r'trailers', TrailerViewSet, basename='movie-trailer')
+domains_router_trailers.register(r'images', ImageViewSet, basename='image_upload')
 domains_router_library= routers.NestedSimpleRouter(router, r'users', lookup='domain')
 domains_router_library.register(r'movies', UserMoviesViewSet, basename='user_movies')
 # 'basename' is optional. Needed only if the same viewset is registered more than once

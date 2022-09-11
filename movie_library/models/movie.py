@@ -1,5 +1,4 @@
 from django.db import models
-from .actor import Actor
 from .base_model import BaseModel
 
 
@@ -11,8 +10,8 @@ class Movie(BaseModel):
     year = models.CharField(max_length=4)
     duration = models.IntegerField()
     release_date = models.DateField()
-    actors = models.ManyToManyField(Actor)
+    #actors = models.ManyToManyField(Actor, through='MovieActor')
 
-    @property
-    def trailers(self):
-        return Movie.trailers.all()
+
+    def __str__(self):
+        return self.title

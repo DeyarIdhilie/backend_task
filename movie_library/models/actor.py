@@ -1,5 +1,5 @@
 from django.db import models
-# from .movie import Movie
+from .movie import Movie
 from .base_model import BaseModel
 
 
@@ -15,6 +15,6 @@ class Actor(BaseModel):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     gender = models.CharField(max_length=6, choices=Gender.choices, default=Gender.FEMALE, )
-
+    movies= models.ManyToManyField(Movie,through='MovieActor')
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
